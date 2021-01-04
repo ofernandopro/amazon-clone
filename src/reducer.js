@@ -1,19 +1,19 @@
 export const initialState = {
-  basket: [
-    {
-      id: "123456789",
-      title: "Código Limpo: Habilidades Práticas do Agile Software",
-      price: 96.62,
-      rating: 5,
-      image: "https://m.media-amazon.com/images/I/41SH-SvWPxL._SX260_.jpg"
-    },
-  ],
+  basket: [],
   user: null,
 };
+
+export const getBasketTotal = (basket) =>
+  basket?.reduce((amount, item) => item.price + amount, 0);
 
 const reducer = (state, action) => {
   console.log(action);
   switch (action.type) {
+    case 'SET_USER':
+      return {
+        ...state,
+        user: action.user
+      }
     case 'ADD_TO_BASKET':
       return {
         ...state,
