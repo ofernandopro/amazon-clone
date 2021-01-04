@@ -25,7 +25,9 @@ const reducer = (state, action) => {
       let newBasket = [...state.basket];
 
       // Checking to see if product exists
-      const index = state.basket.findIndex((basketItem) => basketItem.id === action.id);
+      const index = state.basket.findIndex(
+        (basketItem) => basketItem.id === action.id
+      );
 
       if (index >= 0) {
         newBasket.splice(index, 1);
@@ -34,7 +36,10 @@ const reducer = (state, action) => {
           `Can't remove product (id: ${action.id}) as it's not in the basket`
         );
       }
-      return { ...state, basket: newBasket };
+      return {
+        ...state,
+        basket: newBasket,
+      };
     default:
       return state;
   }
